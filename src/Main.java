@@ -1,19 +1,30 @@
+
 public class Main {
     public static void main(String[] args) {
 
-        Weapon bossWeapon = new Weapon(WeaponType.SWORD, "Excalibur");
-        Boss boss = new Boss("Dark Lord", 1000, 150, bossWeapon);
-        boss.printInfo();
+        Boss boss = new Boss();
+        boss.setHealth(100);
+        boss.setDamage(40);
+        boss.setTypeOfProtection("kinetic");
+        System.out.println("Boss Details:");
+        System.out.println("Health: " + boss.getHealth());
+        System.out.println("Damage: " + boss.getDamage());
+        System.out.println("Type of Protection: " + boss.getTypeOfProtection());
 
 
-        Weapon skeletonWeapon1 = new Weapon(WeaponType.BOW, "Bone Bow");
-        Skeleton skeleton1 = new Skeleton("Skeleton Archer", 300, 50, skeletonWeapon1, 25);
+        Hero[] heroes = createHeroes();
+        System.out.println("\nHeroes Details:");
+        for (Hero hero : heroes) {
+            System.out.println(hero);
+            System.out.println();
+        }
+    }
 
-        Weapon skeletonWeapon2 = new Weapon(WeaponType.BOW, "Shadow Bow");
-        Skeleton skeleton2 = new Skeleton("Skeleton Sniper", 350, 60, skeletonWeapon2, 15);
+    public static Hero[] createHeroes() {
+        Hero petya = new Hero(45, 80, "Power");
+        Hero ivan = new Hero(55, 70);
+        Hero larisa = new Hero(65, "KingPower", 60);
 
-
-        skeleton1.printInfo();
-        skeleton2.printInfo();
+        return new Hero[] { petya, ivan, larisa };
     }
 }
